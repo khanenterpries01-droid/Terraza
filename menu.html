@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumière | Our Menu</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #0f0f0f;
+            color: #e5e5e5;
+        }
+        h1, h2, h3, h4, h5, h6, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .text-gold {
+            color: #D4AF37;
+        }
+        .bg-gold {
+            background-color: #D4AF37;
+        }
+        .border-gold {
+            border-color: #D4AF37;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+        
+        /* Menu Tab Styles */
+        .active-tab {
+            color: #D4AF37 !important;
+            border-bottom-color: #D4AF37 !important;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .menu-item {
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased bg-[#141414]">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-[#0f0f0f] border-b border-white/5 py-4 px-4 sm:px-8 lg:px-16">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="serif text-xl sm:text-2xl font-bold tracking-widest text-white uppercase">Lumière</a>
+            <a href="index.html" class="text-sm uppercase tracking-widest text-white hover:text-gold transition-colors duration-300 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Menu Header -->
+    <header class="pt-32 pb-12 px-4 text-center bg-[#0f0f0f]">
+        <span class="text-gold uppercase tracking-[0.2em] text-sm">Culinary Masterpieces</span>
+        <h1 class="text-4xl md:text-6xl text-white mt-4 mb-6">Our Full Menu</h1>
+        <p class="text-gray-400 max-w-2xl mx-auto font-light">Explore our carefully curated selection of dishes, drinks, and desserts.</p>
+    </header>
+
+    <!-- Full Menu Section -->
+    <section id="menu-content" class="pb-24 px-4 sm:px-8 lg:px-16">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Mobile Optimized Categories -->
+            <div class="sticky top-[70px] z-30 bg-[#141414]/95 backdrop-blur py-4 mb-12 -mx-4 px-4 sm:mx-0 sm:px-0 border-b border-white/10">
+                <div class="flex flex-nowrap overflow-x-auto hide-scrollbar gap-6 md:justify-center">
+                    <button onclick="filterMenu('all')" class="menu-tab active-tab whitespace-nowrap text-sm uppercase tracking-widest px-2 py-2 text-white hover:text-gold transition-colors border-b-2 border-transparent">All</button>
+                    <button onclick="filterMenu('starters')" class="menu-tab whitespace-nowrap text-sm uppercase tracking-widest px-2 py-2 text-gray-400 hover:text-gold transition-colors border-b-2 border-transparent">Starters</button>
+                    <button onclick="filterMenu('mains')" class="menu-tab whitespace-nowrap text-sm uppercase tracking-widest px-2 py-2 text-gray-400 hover:text-gold transition-colors border-b-2 border-transparent">Mains</button>
+                    <button onclick="filterMenu('steaks')" class="menu-tab whitespace-nowrap text-sm uppercase tracking-widest px-2 py-2 text-gray-400 hover:text-gold transition-colors border-b-2 border-transparent">Steaks & Grill</button>
+                    <button onclick="filterMenu('seafood')" class="menu-tab whitespace-nowrap text-sm uppercase tracking-widest px-2 py-2 text-gray-400 hover:text-gold transition-colors border-b-2 border-transparent">Seafood</button>
+                    <button onclick="filterMenu('desserts')" class="menu-tab whitespace-nowrap text-sm uppercase tracking-widest px-2 py-2 text-gray-400 hover:text-gold transition-colors border-b-2 border-transparent">Desserts</button>
+                    <button onclick="filterMenu('drinks')" class="menu-tab whitespace-nowrap text-sm uppercase tracking-widest px-2 py-2 text-gray-400 hover:text-gold transition-colors border-b-2 border-transparent">Drinks</button>
+                </div>
+            </div>
+
+            <!-- Menu Grid -->
+            <div id="menu-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-10">
+                
+                <!-- Starters -->
+                <div class="menu-item flex gap-4 sm:gap-6 items-start" data-category="starters">
+                    <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=150&q=80" alt="Carpaccio" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md shadow-lg opacity-90">
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-baseline border-b border-white/10 pb-2 mb-2 border-dotted">
+                            <h3 class="text-lg sm:text-xl text-white serif italic">Beef Carpaccio</h3>
+                            <span class="text-gold font-bold text-lg">$24</span>
+                        </div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Thinly sliced cured beef, parmesan shavings, capers, truffle oil.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item flex gap-4 sm:gap-6 items-start" data-category="starters">
+                    <img src="https://images.unsplash.com/photo-1608039755401-742074f0548d?auto=format&fit=crop&w=150&q=80" alt="Burrata" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md shadow-lg opacity-90">
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-baseline border-b border-white/10 pb-2 mb-2 border-dotted">
+                            <h3 class="text-lg sm:text-xl text-white serif italic">Truffle Burrata</h3>
+                            <span class="text-gold font-bold text-lg">$26</span>
+                        </div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Fresh burrata, heirloom tomatoes, basil pesto, balsamic glaze.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item flex gap-4 sm:gap-6 items-start" data-category="starters">
+                    <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=150&q=80" alt="Foie Gras" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md shadow-lg opacity-90">
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-baseline border-b border-white/10 pb-2 mb-2 border-dotted">
+                            <h3 class="text-lg sm:text-xl text-white serif italic">Pan-Seared Foie Gras</h3>
+                            <span class="text-gold font-bold text-lg">$32</span>
+                        </div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Fig chutney, toasted brioche, port wine reduction.</p>
+                    </div>
+                </div>
+
+                <!-- Mains -->
+                <div class="menu-item flex gap-4 sm:gap-6 items-start" data-category="mains">
+                    <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=150&q=80" alt="Truffle Pasta" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md shadow-lg opacity-90">
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-baseline border-b border-white/10 pb-2 mb-2 border-dotted">
+                            <h3 class="text-lg sm:text-xl text-white serif italic">Black Truffle Pasta</h3>
+                            <span class="text-gold font-bold text-lg">$42</span>
+                        </div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Handmade tagliatelle, fresh black truffle, parmesan cream.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item flex gap-4 sm:gap-6 items-start" data-category="mains">
+                    <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=150&q=80" alt="Duck" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md shadow-lg opacity-90">
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-baseline border-b border-white/10 pb-2 mb-2 border-dotted">
+                            <h3 class="text-lg sm:text-xl text-white serif italic">Duck Breast</h3>
+                            <span class="text-gold font-bold text-lg">$45</span>
+                        </div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Honey glazed duck breast, parsnip purée, cherry sauce.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item flex gap-4 sm:gap-6 items-start" data-category="mains">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=150&q=80" alt="Risotto" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md shadow-lg opacity-90">
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-baseline border-b border-white/10 pb-2 mb-2 border-dotted">
+                            <h3 class="text-lg sm:text-xl text-white serif italic">Wild Mushroom Risotto</h3>
+                            <span class="text-gold font-bold text-lg">$36</span>
+                        </div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Arborio rice, porcini mushrooms, white wine, parmesan crisp.</p>
+                    </div>
+                </div>
+
+                <!-- Steaks -->
+                <div class="menu-item flex gap-4 sm:gap-6 items-start" data-category="steaks">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76690b68f11?auto=format&fit=crop&w=150&q=80" alt="Wagyu" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md shadow-lg opacity-90">
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-baseline border-b border-white/10 pb-2 mb-2 border-dotted">
+                            <h3 class="text-lg sm:text-xl text-white serif italic">Wagyu Ribeye A5</h3>
+                            <span class="text-gold font-bold text-lg">$85</span>
+                        </div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Japanese Wagyu, truffle mash, grilled asparagus.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item flex gap-4 sm:gap-6 items-start" data-category="steaks">
+                    <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=150&q=80" alt="Filet Mignon" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md shadow-lg opacity-90">
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-baseline border-b border-white/10 pb-2 mb-2 border-dotted">
+                            <h3 class="text-lg sm:text-xl text-white serif italic">Filet Mignon</h3>
+                            <span class="text-gold font-bold text-lg">$55</span>
+                        </div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">USDA Prime center cut, potato dauphinoise, peppercorn sauce.</p>
+                    </div>
+                </div>
+
+                <!-- Seafood -->
+                <div class="menu-item flex gap-4 sm:gap-6 items-start" data-category="seafood">
+                    <img src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?auto=format&fit=crop&w=150&q=80" alt="Scallops" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md shadow-lg opacity-90">
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-baseline border-b border-white/10 pb-2 mb-2 border-dotted">
+                            <h3 class="text-lg sm:text-xl text-white serif italic">Seared Scallops</h3>
+                            <span class="text-gold font-bold text-lg">$38</span>
+                        </div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Cauliflower purée, caviar, herb oil, pancetta crumble.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item flex gap-4 sm:gap-6 items-start" data-category="seafood">
+                    <img src="https://images.unsplash.com/photo-1535567465397-752884c85111?auto=format&fit=crop&w=150&q=80" alt="Sea Bass" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md shadow-lg opacity-90">
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-baseline border-b border-white/10 pb-2 mb-2 border-dotted">
+                            <h3 class="text-lg sm:text-xl text-white serif italic">Chilean Sea Bass</h3>
+                            <span class="text-gold font-bold text-lg">$48</span>
+                        </div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Miso glazed, bok choy, ginger dashi broth.</p>
+                    </div>
+                </div>
+
+                <!-- Desserts -->
+                <div class="menu-item flex gap-4 sm:gap-6 items-start" data-category="desserts">
+                    <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=150&q=80" alt="Fondant" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md shadow-lg opacity-90">
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-baseline border-b border-white/10 pb-2 mb-2 border-dotted">
+                            <h3 class="text-lg sm:text-xl text-white serif italic">Chocolate Fondant</h3>
+                            <span class="text-gold font-bold text-lg">$16</span>
+                        </div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Molten center, vanilla bean ice cream, berries.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item flex gap-4 sm:gap-6 items-start" data-category="desserts">
+                    <img src="https://images.unsplash.com/photo-1571875257727-256c39da42af?auto=format&fit=crop&w=150&q=80" alt="Tiramisu" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md shadow-lg opacity-90">
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-baseline border-b border-white/10 pb-2 mb-2 border-dotted">
+                            <h3 class="text-lg sm:text-xl text-white serif italic">Classic Tiramisu</h3>
+                            <span class="text-gold font-bold text-lg">$14</span>
+                        </div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Espresso soaked ladyfingers, mascarpone cream, cocoa.</p>
+                    </div>
+                </div>
+
+                <!-- Drinks -->
+                <div class="menu-item flex gap-4 sm:gap-6 items-start" data-category="drinks">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16549766b?auto=format&fit=crop&w=150&q=80" alt="Cocktail" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md shadow-lg opacity-90">
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-baseline border-b border-white/10 pb-2 mb-2 border-dotted">
+                            <h3 class="text-lg sm:text-xl text-white serif italic">Smoked Old Fashioned</h3>
+                            <span class="text-gold font-bold text-lg">$18</span>
+                        </div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Bourbon, maple syrup, angostura bitters, hickory smoke.</p>
+                    </div>
+                </div>
+
+                <div class="menu-item flex gap-4 sm:gap-6 items-start" data-category="drinks">
+                    <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=150&q=80" alt="Wine" class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-md shadow-lg opacity-90">
+                    <div class="flex-1 w-full">
+                        <div class="flex justify-between items-baseline border-b border-white/10 pb-2 mb-2 border-dotted">
+                            <h3 class="text-lg sm:text-xl text-white serif italic">Château Margaux</h3>
+                            <span class="text-gold font-bold text-lg">$120</span>
+                        </div>
+                        <p class="text-gray-400 text-sm font-light leading-relaxed">Premier Grand Cru Classé, Bordeaux, France.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="serif text-2xl font-bold tracking-widest text-white uppercase mb-6">Lumière</h2>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="text-gray-500 hover:text-gold transition-colors">Instagram</a>
+                <a href="#" class="text-gray-500 hover:text-gold transition-colors">Facebook</a>
+                <a href="#" class="text-gray-500 hover:text-gold transition-colors">Twitter</a>
+            </div>
+            <p class="text-gray-600 text-sm">© 2023 Lumière Restaurant. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Filter Function
+        function filterMenu(category) {
+            const items = document.querySelectorAll('.menu-item');
+            const tabs = document.querySelectorAll('.menu-tab');
+            
+            // Update tabs state
+            tabs.forEach(tab => {
+                // Reset all tabs
+                tab.classList.remove('active-tab', 'text-white');
+                tab.classList.add('text-gray-400', 'border-transparent');
+                
+                // Set active tab
+                const tabCategory = tab.getAttribute('onclick').split("'")[1];
+                if (tabCategory === category) {
+                    tab.classList.add('active-tab', 'text-white');
+                    tab.classList.remove('text-gray-400', 'border-transparent');
+                }
+            });
+
+            // Filter items with animation
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    if (item.style.display === 'none') {
+                        item.style.display = 'flex';
+                        item.style.opacity = '0';
+                        // Trigger reflow
+                        void item.offsetWidth;
+                        item.style.opacity = '1';
+                    } else {
+                        item.style.display = 'flex';
+                        item.style.opacity = '1';
+                    }
+                } else {
+                    item.style.display = 'none';
+                    item.style.opacity = '0';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
